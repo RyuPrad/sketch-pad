@@ -16,6 +16,10 @@ canvas.addEventListener("touchmove", draw, false);
 canvas.addEventListener("mousedown", start, false);
 canvas.addEventListener("mousemove", draw, false);
 
+canvas.addEventListener("touchend", stop, false);
+canvas.addEventListener("mouseup", stop, false);
+canvas.addEventListener("mouseout", stop, false);
+
 
 function start(event) {
     is_drawing = true;
@@ -35,4 +39,14 @@ function draw(event) {
         context.linejoin = "round";
         context.stroke();
     }
+    event.preventDefault();
+}
+
+function stop(event) {
+    if (is_drawing) {
+        context.stroke();
+        context.closePath();
+        is_drawing = false;
+    }
+    event.preventDefault();
 }
