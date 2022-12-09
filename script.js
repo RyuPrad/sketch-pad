@@ -24,3 +24,15 @@ function start(event) {
                    event.clientY - canvas.offsetTop);
     event.preventDefault();              
 }
+
+function draw(event) {
+    if (is_drawing) {
+        context.lineTo(event.clientX - canvas.offsetLeft,
+                       event.clientY - canvas.offsetTop);
+        context.strokeStyle = draw_color;
+        context.lineWidth = draw_width;
+        context.lineCap - "round";
+        context.linejoin = "round";
+        context.stroke();
+    }
+}
